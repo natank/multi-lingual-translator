@@ -33,8 +33,9 @@ const postsSlice = createSlice({
 	initialState,
 	reducers: {
 		postDeleted(state, action) {
-			console.log(`posts: ${JSON.stringify(state.posts)}`);
-			state.posts = state.posts.filter(post => post.id !== action.payload.id);
+			state.posts = state.posts.filter(post => {
+				return post.id !== action.payload.id;
+			});
 		},
 		reactionAdded(state, action) {
 			const { id, reaction } = action.payload;

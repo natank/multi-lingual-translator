@@ -54,8 +54,7 @@ export function SinglePost({ post }) {
 				<Container>
 					<Button
 						variant='contained'
-						onClick={() => dispatch(postDeleted({ id: post.id }))}
-						disabled>
+						onClick={() => dispatch(postDeleted({ id: post.id }))}>
 						X
 					</Button>
 				</Container>
@@ -65,13 +64,23 @@ export function SinglePost({ post }) {
 						onClick={() =>
 							dispatch(reactionAdded({ id: post.id, reaction: 'likes' }))
 						}>
-						Like{reactions.likes ? `(${reactions.likes})` : null}
+						Like
+						{reactions
+							? reactions.likes
+								? `(${reactions.likes})`
+								: null
+							: null}
 					</Button>
 					<Button
 						onClick={() =>
 							dispatch(reactionAdded({ id: post.id, reaction: 'dislikes' }))
 						}>
-						Dislike{reactions.dislikes ? `(${reactions.dislikes})` : null}
+						Dislike
+						{reactions
+							? reactions.dislikes
+								? `(${reactions.dislikes})`
+								: null
+							: null}
 					</Button>
 				</Container>
 			</Container>
